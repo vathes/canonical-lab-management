@@ -1,6 +1,10 @@
 import datajoint as dj
+from djutils import templates
+
+schema_template = templates.SchemaTemplate()
 
 
+@schema_template
 class Lab(dj.Lookup):
     definition = """
     lab             : varchar(32)  # name of lab
@@ -11,6 +15,7 @@ class Lab(dj.Lookup):
     """
 
 
+@schema_template
 class Location(dj.Lookup):  # revisit the naming
     definition = """
     # location of animal housing or experimental rigs
@@ -21,12 +26,14 @@ class Location(dj.Lookup):  # revisit the naming
     """
 
 
+@schema_template
 class UserRole(dj.Lookup):
     definition = """
     user_role       : varchar(16)
     """
 
 
+@schema_template
 class User(dj.Lookup):
     definition = """
     user                : varchar(32)
@@ -36,6 +43,7 @@ class User(dj.Lookup):
     """
 
 
+@schema_template
 class LabMembership(dj.Lookup):
     definition = """
     -> Lab
@@ -45,12 +53,14 @@ class LabMembership(dj.Lookup):
     """
 
 
+@schema_template
 class ProtocolType(dj.Lookup):
     definition = """
     protocol_type           : varchar(32)
     """
 
 
+@schema_template
 class Protocol(dj.Lookup):
     definition = """
     # protocol approved by some institutions like IACUC, IRB
@@ -61,6 +71,7 @@ class Protocol(dj.Lookup):
     """
 
 
+@schema_template
 class Project(dj.Lookup):
     definition = """
     project                 : varchar(32)
@@ -69,6 +80,7 @@ class Project(dj.Lookup):
     """
 
 
+@schema_template
 class ProjectUser(dj.Manual):
     definition = """
     -> Project
@@ -76,6 +88,7 @@ class ProjectUser(dj.Manual):
     """
 
 
+@schema_template
 class Source(dj.Lookup):
     definition = """
     # source of animal

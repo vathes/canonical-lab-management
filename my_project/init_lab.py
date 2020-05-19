@@ -1,6 +1,6 @@
 import datajoint as dj
-from djlab import pipeline
+from djlab import schema_template as lab
 
 schema = dj.schema('u24_lab_')
 
-lab_tables = pipeline.init_pipeline(schema, add_here=True)
+lab.declare_tables(schema, add_here=True)
