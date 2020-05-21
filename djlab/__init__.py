@@ -1,1 +1,1 @@
-from .lab import schema
+from .lab import schema as lab
