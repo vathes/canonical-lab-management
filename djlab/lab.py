@@ -1,10 +1,10 @@
 import datajoint as dj
-from djutils import templates
+from djutils.templates import SchemaTemplate
 
-schema_template = templates.SchemaTemplate()
+schema = SchemaTemplate()
 
 
-@schema_template
+@schema
 class Lab(dj.Lookup):
     definition = """
     lab             : varchar(32)  # name of lab
@@ -15,7 +15,7 @@ class Lab(dj.Lookup):
     """
 
 
-@schema_template
+@schema
 class Location(dj.Lookup):  # revisit the naming
     definition = """
     # location of animal housing or experimental rigs
@@ -26,14 +26,14 @@ class Location(dj.Lookup):  # revisit the naming
     """
 
 
-@schema_template
+@schema
 class UserRole(dj.Lookup):
     definition = """
     user_role       : varchar(16)
     """
 
 
-@schema_template
+@schema
 class User(dj.Lookup):
     definition = """
     user                : varchar(32)
@@ -43,7 +43,7 @@ class User(dj.Lookup):
     """
 
 
-@schema_template
+@schema
 class LabMembership(dj.Lookup):
     definition = """
     -> Lab
@@ -53,14 +53,14 @@ class LabMembership(dj.Lookup):
     """
 
 
-@schema_template
+@schema
 class ProtocolType(dj.Lookup):
     definition = """
     protocol_type           : varchar(32)
     """
 
 
-@schema_template
+@schema
 class Protocol(dj.Lookup):
     definition = """
     # protocol approved by some institutions like IACUC, IRB
@@ -71,7 +71,7 @@ class Protocol(dj.Lookup):
     """
 
 
-@schema_template
+@schema
 class Project(dj.Lookup):
     definition = """
     project                 : varchar(32)
@@ -80,7 +80,7 @@ class Project(dj.Lookup):
     """
 
 
-@schema_template
+@schema
 class ProjectUser(dj.Manual):
     definition = """
     -> Project
@@ -88,7 +88,7 @@ class ProjectUser(dj.Manual):
     """
 
 
-@schema_template
+@schema
 class Source(dj.Lookup):
     definition = """
     # source of animal
